@@ -1,12 +1,6 @@
 {
   "tasks": [
     {
-      "id": 1,
-      "text": "Dentist appointment",
-      "day": "12-05-2022",
-      "reminder": true
-    },
-    {
       "id": 3
     },
     {

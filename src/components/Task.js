@@ -8,7 +8,7 @@ const Task = (props) => {
             <h3>{task.text}
                 <FaTimes style={{ color: 'red', cursor: 'pointer' }}
                     onClick={() => props.onDelete(task.id)} /></h3>
-            <p>{task.day}</p>
+            <p>{task.date}</p>
         </div>
     );
 }
