@@ -1,0 +1,19 @@
+{
+  "tasks": [
+    {
+      "text": "Dentist appointment",
+      "day": "12-05-2022",
+      "reminder": true
+    },
+    {
+      "text": "Date with Clara",
+      "day": "15-07-2034",
+      "reminder": true
+    },
+    {
+      "text": "Buy groceries",
+      "day": "05-05-2022",
+      "reminder": true
+    }
+  ]
+}
