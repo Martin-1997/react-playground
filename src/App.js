@@ -1,24 +1,33 @@
 import './App.css';
 import Header from './components/Header';
 import Tasks from './components/Tasks';
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import AddTask from './components/AddTask';
-import { useEffect } from 'react';
 
 function App() {
   const [showAddTask, setShowAddTask] = useState(true)
-
   const [tasks, setTasks] = useState([])
+  var i = 0
 
   useEffect(() => {
-    const fetchTasks = async() => {
-      const res = await fetch('http://192.168.122.169:5000/tasks')
-      const data = await res.json()
-
-      console.log(data)
+    const getTasks = async() => {
+      const tasksFromServer = await fetchTasks()
+      //if(i > 0){
+      console.log(tasksFromServer)
+      //}
+      i++
+      setTasks(tasksFromServer)
     }
-    fetchTasks()
+    getTasks()
   }, [])
+
+  
+
+  const fetchTasks = async() => {
+    const res = await fetch('http://localhost:2045/tasks')
+    const data = await res.json()
+    return data
+  }
   
   const addTask = (task) => {
     const id = Math.floor(Math.random() * 1000000)
@@ -26,7 +35,10 @@ function App() {
     setTasks([...tasks, newTask])
   }
 
-  const deleteTask = (id) => {
+  const deleteTask = async(id) => {
+    await fetch(`http://localhost:2045/tasks/${id}`, {
+      method : "DELETE"
+    })
     // console.log('delete', id)
     setTasks(tasks.filter((task) => task.id !== id))
   }

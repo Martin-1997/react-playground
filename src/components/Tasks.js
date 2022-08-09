@@ -1,13 +1,9 @@
 import Task from "./Task"
 
-const Tasks = (probs) => {
-    var tasks = probs.tasks
-
-
-
+const Tasks = (props) => {
     return (
         <div>
-            {tasks.map((task) => <Task task={task} key={task.id} onDelete = {probs.onDelete} switchTaskReminder={probs.switchTaskReminder}></Task>)}
+            {props.tasks.map((task, index) => <Task task={task} key={index} onDelete = {props.onDelete} switchTaskReminder={props.switchTaskReminder}></Task>)}
         </div>
     )
 }
