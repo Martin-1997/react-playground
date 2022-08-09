@@ -29,7 +29,7 @@ function App() {
     return data
   }
 
-  const fetchTask = async() => {
+  const fetchTask = async(id) => {
     const res = await fetch(`http://localhost:2045/tasks/${id}`)
     const data = await res.json()
     return data
