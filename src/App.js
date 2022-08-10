@@ -7,15 +7,15 @@ import AddTask from './components/AddTask';
 function App() {
   const [showAddTask, setShowAddTask] = useState(true)
   const [tasks, setTasks] = useState([])
-  var i = 0
+ //var i = 0
 
   useEffect(() => {
     const getTasks = async() => {
       const tasksFromServer = await fetchTasks()
       //if(i > 0){
-      console.log(tasksFromServer)
+      //console.log(tasksFromServer)
       //}
-      i++
+      //i++
       setTasks(tasksFromServer)
     }
     getTasks()
@@ -60,14 +60,29 @@ function App() {
     setTasks(tasks.filter((task) => task.id !== id))
   }
 
-  const switchTaskReminder = (id) => {
+  const switchTaskReminder = async(id) => {
     // console.log(`Switch for item ${id}`)
     // var item = (tasks.find((task) => task.id = id))
     // var index = tasks.indexOf(item)
     // console.log(item)
     // item.reminder = !item.reminder
     // tasks.splice(index, 1, item)
-    setTasks(tasks.map((task) => task.id === id ? {...task, reminder : !task.reminder} : task))
+    const taskToToggle = await fetchTask(id)
+    const updatedTask = {...taskToToggle, reminder : !taskToToggle.reminder}
+    console.log(updatedTask)
+    
+    const res = await fetch(`http://localhost:2045/tasks/${id}`, {
+      method : "PUT",
+      header : {
+        'Content-type' : "application/json"
+      },
+      body : JSON.stringify(updatedTask)
+    })
+    const data = await res.json()
+    console.log("data:")
+    console.log(data)
+
+    setTasks(tasks.map((task) => task.id === id ? data : task))
   }
 
   return (
