@@ -3,6 +3,7 @@ import Header from './components/Header';
 import Tasks from './components/Tasks';
 import { useState, useEffect } from "react"
 import AddTask from './components/AddTask';
+import Footer from './components/Footer';
 
 function App() {
   const [showAddTask, setShowAddTask] = useState(true)
@@ -88,7 +89,7 @@ function App() {
   return (
     // Java Script Syntax Extension Language
     <div>
-      <h1>Hello World</h1>
+      <h1 href='/' >Hello World</h1>
 
       <Header onAdd = {() => setShowAddTask(!showAddTask)} showAddTask = {showAddTask}> </Header>
       {showAddTask &&<AddTask className='container' onAdd={addTask}></AddTask>} 
@@ -99,23 +100,8 @@ function App() {
           <Tasks tasks={tasks} onDelete={deleteTask} switchTaskReminder={switchTaskReminder}></Tasks> : 'No tasks available'
         }
       </div>
+      <Footer></Footer>
     </div>
-    // <div className="App"> 
-    //   <header className="App-header">
-    //     <img src={logo} className="App-logo" alt="logo" />
-    //     <p>
-    //       Edit <code>src/App.js</code> and save to reload.
-    //     </p>
-    //     <a
-    //       className="App-link"
-    //       href="https://reactjs.org"
-    //       target="_blank"
-    //       rel="noopener noreferrer"
-    //     >
-    //       Learn React
-    //     </a>
-    //   </header>
-    // </div>
   );
 }
 

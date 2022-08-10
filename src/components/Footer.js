@@ -2,9 +2,10 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <div>
-      
-    </div>
+    <footer>
+      <p>Copyright &copy; 2022</p>
+      <a href='/about'>About</a>
+    </footer>
   );
 }
 
