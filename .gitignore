@@ -24,3 +24,4 @@ yarn-error.log*
 
 # This file is used by our testing JSON server
 db.json
+TODO.txt
