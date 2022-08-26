@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <footer>
       <p>Copyright &copy; 2022</p>
-      <Link to='/about'>About</Link>
+      <p>Example Flightportal</p>
     </footer>
   );
 }

@@ -1,11 +1,15 @@
 import ListGroup from 'react-bootstrap/ListGroup';
 import Flight from './Flight';
-
+/*
+The FlightList container is a list view which displays multiple Flight Containers. Each Flight Container displays the information for one available flight.
+*/
 const FlightList = ({ flights }) => {
     return (
         <ListGroup variant="">
             {/* key is only used by the list, but it is not forwarded to the list component https://reactjs.org/warnings/special-props.html */}
-            {flights.map((flight, key) => <Flight flight={flight} key={key}></Flight>)}
+            {flights.map((flight, key) =>
+                    <Flight flight={flight} key={key} currency_symbol={"€"}></Flight>
+            )}
         </ListGroup>
     );
 }

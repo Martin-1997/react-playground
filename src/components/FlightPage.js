@@ -1,31 +1,48 @@
 import React from 'react';
 import FlightList from './FlightList';
 import ListSelector from './ListSelector';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import { useState } from 'react';
 
+/*
+The Flight Page displays a FlightList Container and multiple other containers which allow filtering the Flights provided in the FlightList container.
+*/
+
 export default function FlightPage({ flights, airports, countries, airlines }) {
-    const [airportNames, setAirportNames] = useState([])
+
+    //const [airportNames, setAirportNames] = useState([])
 
     // useEffect?
     // setAirportNames([airports.map((airport) => airport.name)][0])
     // // console.log([airports.map((airport) => airport.name)][0])
     // console.log(airportNames)
 
+    // const filter_dest_airport = (filtered_dest_airports) => {
+    //     setAirportNames(airportNames.filter((airportName) => filtered_dest_airports.includes(airportName)))
+    // }
+    const [startAirports, setStartAirports] = useState(airports)
+    const [destAirports, setDestAirports] = useState(airports)
 
-    const filter_dest_airport = (filtered_dest_airports) => {
-        setAirportNames(airportNames.filter((airportName) => filtered_dest_airports.includes(airportName)))
-    }
-
-    // var filter_dest_airport = "Berlin Brandenburg Airport"
     return (
-        <div>
-            {/* <ListSelector name={"Start Airport"} items={airportNames} ></ListSelector> */}
-            {/* <ListSelector name={"Destination Airports"} items={airportNames} filter_dest_airport={filter_dest_airport}></ListSelector> */}
-            {
-                if !(flights === null) ? <FlightList flights={ flights.filter((flight) => {flight.destination_name === filter_dest_airport})}></FlightList> : "No flights available"
-            }
-            
-        </div>
+        <Container>
+            <Row>
+                <Col>
+                    <ListSelector name={"Start Airport"} items={airports} optionKey={"id"} optionLabel={"name"} onChange={setStartAirports}></ListSelector>
+                    <ListSelector name={"Destination Airports"} items={airports} optionKey={"id"} optionLabel={"name"} onChange={setDestAirports}></ListSelector>
+                </Col>
+                <Col xs={10}>
+                    <FlightList flights={flights}></FlightList>
+                    {/* <FlightList flights={ flights.filter((flight) => {flight.destination_name === filter_dest_airport})}></FlightList> */}
+                    {
+
+                        //   if !(flights === null) ? <FlightList flights={ flights.filter((flight) => {flight.destination_name === filter_dest_airport})}></FlightList> : "No flights available"
+                    }
+                </Col>
+                {/* <Col>3 of 3</Col> */}
+            </Row>
+        </Container>
     );
 }
 

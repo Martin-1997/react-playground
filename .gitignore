@@ -22,6 +22,9 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# This file is used by our testing JSON server
+# These files are used by our testing JSON server
 db.json
+routes.json
+
+# Notes for the project which should not be synched
 TODO.txt

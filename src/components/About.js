@@ -4,7 +4,7 @@ const About = () => {
     return (
       <div>
             <h4>Version 0.1</h4>
-            <Link to="/">Go Back</Link>
+            <h4>Created by Martin Zeitler</h4>
       </div>
     );
   }

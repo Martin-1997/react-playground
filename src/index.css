@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
 
 * {
   box-sizing: border-box;
@@ -11,8 +11,8 @@ body {
 }
 
 .container {
-  max-width: 500px;
-  margin: 30px auto;
+  max-width: 1800px;
+  margin: 10px auto;
   overflow: auto;
   min-height: 300px;
   border: 1px solid steelblue;
@@ -115,4 +115,4 @@ body {
 footer {
   margin-top: 30px;
   text-align: center;
-}
+} */

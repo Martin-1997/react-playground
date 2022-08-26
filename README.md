@@ -1,6 +1,17 @@
-# Getting Started with Create React App
+# Flight Search Engine
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
+
+This project includes a web application written in React, which allows the user to search for flights based on very comprehensive search options. This is especially useful for flexible travellers who search for cheap offers.
+
+## Features
+
+- User can create, edit or delete their account
+- Users can set up global search parameters which affect all their future searches. 
+- Users can view and filter the available flights
+
+
+# Original placeholder README created by Create-React-App
 
 ## Available Scripts
 
