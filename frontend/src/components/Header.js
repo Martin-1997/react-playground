@@ -25,6 +25,9 @@ const Header = (props) => {
             <Link to="/about" >
               <Button>About</Button>
             </Link>
+            <Link to="/admin" >
+              <Button>Admin</Button>
+            </Link>
           </div>
       </nav>
   );

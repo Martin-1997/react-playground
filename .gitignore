@@ -2,8 +2,12 @@
 
 # dependencies
 /frontend/node_modules
+/backend/node_modules
 /.pnp
 .pnp.js
+
+# authentication data
+/backend/auth.json
 
 # testing
 /coverage
@@ -28,3 +32,6 @@ routes.json
 
 # Notes for the project which should not be synched
 TODO.txt
+
+# environment definition files
+.env*

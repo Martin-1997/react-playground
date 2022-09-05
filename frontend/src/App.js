@@ -11,6 +11,8 @@ import { useState, useEffect } from 'react';
 import Container from 'react-bootstrap/Container';
 import useFetch from './useFetch';
 import FlightDetails from './components/FlightDetails';
+import Admin from './components/Admin';
+import NotFound from './components/NotFound';
 
 function App() {
   /*
@@ -59,7 +61,7 @@ function App() {
     // catch(err) {
     //   console.log(err)
     // }
-    fetch(`http://localhost:2045/data`)
+    fetch(`http://localhost:5000/`)
       .then((res) => {
         // Check if the response is not valid
         if (!res.ok) {
@@ -106,6 +108,9 @@ function App() {
               </Route>
               <Route exact path="/about" element={<About></About>}>
               </Route>
+              <Route exact path="/admin" element={<Admin></Admin>}>
+              </Route>
+              <Route path="*" element={<NotFound></NotFound>}></Route>
             </Routes>
           </Container>
         }
