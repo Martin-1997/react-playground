@@ -11,6 +11,3 @@ const countrySchema = new Schema({
 const Country = mongoose.model('Country', countrySchema)
 
 module.exports = Country
-
-// "id": 1,
-// "name": "Germany"

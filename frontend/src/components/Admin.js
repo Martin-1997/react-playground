@@ -11,7 +11,8 @@ const Admin = () => {
     const navigate = useNavigate()
 
     const handleSubmit = (e) => {
-        e.preventDefault();
+        // This stops the page from reloading
+        // e.preventDefault();
         setCreatePending(true)
 
         const country = { name };
@@ -32,13 +33,14 @@ const Admin = () => {
     }
 
     const handleDelete = (e) => {
-        e.preventDefault();
-        console.log(e)
-        // fetch('http://localhost:5000/countries/' + id, {
-        //     method:'DELETE'
-        // }).then(() => {
-        //     navigate("/admin")
-        // })
+        // This stops the page from reloading
+        //e.preventDefault();
+        let id = e.target.id.value;
+        fetch('http://localhost:5000/countries/' + id, {
+            method:'DELETE'
+        }).then(() => {
+            navigate("/admin")
+        })
     }
 
     return <div>

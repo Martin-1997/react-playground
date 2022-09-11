@@ -9,13 +9,14 @@ const path = require('path');
 const morgan = require('morgan');
 var bodyParser = require('body-parser')
 
+const countryRoads = require('./routes/countryRoutes')
+
 const DATAFILE = './data.json';
 
 // Load json example data
 var data = require(DATAFILE);
 
 const MONGO_DB_URI = `mongodb+srv://sgloieatgtg3e:${process.env.MONGO_DB_PASSWORD}@flightapp.rl4lnzc.mongodb.net/?retryWrites=true&w=majority`
-const Country = require('./models/country')
 
 // Mongoose -> ODM library Object Document Mapping library -> wraps the MongoDB API and uses models to let us work with objects in JS
 // Schema -> definition of data and variables
@@ -66,60 +67,7 @@ app.use(cors({ origin: true }));
 //     next();
 //   });
 
-// Test request to mongoose in middleware
-app.get('/add_country', (req, res) => {
-    const country = new Country({
-        name: 'Peru',
-    })
-    // save the country to the MongoDB in the database
-    country.save()
-        .then((result) => {
-            res.send(result)
-        }).catch((err) => console.log(err))
-})
-
-app.get('/countries', (req, res) => {
-    // Sort by "name" is ascending order, -1 for descending
-    Country.find().sort({ name: 1 }).then((result) => {
-        res.setHeader('Access-Control-Allow-Origin', '*')
-        res.send(result)
-    }).catch((err) => console.log(err))
-})
-
-app.get('/countries/:id', (req, res) => {
-    Country.findById(req.params.id)
-        .then((result) => {
-            res.send(result)
-        }).catch((err) => console.log(err))
-})
-
-app.post('/countries', (req, res) => {
-    console.log("Post request:")
-    console.log(req.body)
-    const country = new Country(req.body)
-    country.save().then((result) => {
-        // res.redirect("/countries")
-        res.setHeader('Access-Control-Allow-Origin', '*')
-        res.json({ redirect : '/admin'})
-        res.end()
-    }).catch((err) => console.log(err))
-})
-
-app.delete('/countries/:id', (req, res) => {
-    const id = req.params.id;
-    Country.findByIdAndDelete(id).then((result) => {
-        // res.redirect("/countries")
-        res.setHeader('Access-Control-Allow-Origin', '*')
-        res.json({ redirect : '/admin'})
-        res.end()
-    }).catch((err) => console.log(err))
-})
-
-app.use(express.urlencoded({ extended: true }))
-app.post('/countries', (req, res) => {
-    // expects data from a http post request like it could be send by html form in the browser
-    req.body
-})
+app.use(countryRoads)
 
 app.get('/', async (req, res) => {
     res.statusCode = 200;
