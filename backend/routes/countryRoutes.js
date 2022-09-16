@@ -1,5 +1,7 @@
 const express = require('express')
-const Country = require('../models/country')
+// const Country = require('../models/country')
+
+
 
 const router = express.Router();
 
@@ -11,19 +13,20 @@ router.get('/countries', (req, res) => {
 })
 
 router.get('/countries/:id', (req, res) => {
-    Country.findById(req.params.id)
-        .then((result) => {
-            res.send(result)
-        }).catch((err) => console.log(err))
+    Country.findAll({ where: req.body.id})
+    // Country.findById(req.params.id)
+    //     .then((result) => {
+    //         res.send(result)
+    //     }).catch((err) => console.log(err))
 })
 
 router.post('/countries', (req, res) => {
-    console.log(req.body)
-    const country = new Country(req.body)
-    country.save().then((result) => {
-        res.json({ redirect: '/admin' })
-        res.end()
-    }).catch((err) => console.log(err))
+   // pool.query()
+    // const country = new Country(req.body)
+    // country.save().then((result) => {
+    //     res.json({ redirect: '/admin' })
+    //     res.end()
+    // }).catch((err) => console.log(err))
 })
 
 router.delete('/countries/:id', (req, res) => {

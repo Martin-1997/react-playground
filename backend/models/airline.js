@@ -1,17 +1,17 @@
-const mongoose = require('mongoose')
-const Schema = mongoose.Schema;
+const Sequelize = require('sequelize')
+const sequelize = require('../db')
 
-const airlineSchema = new Schema({
-    name: {
-        type : String,
-        required : true,
+const Airline = sequelize.define("airline", {
+    id: {
+        type: Sequelize.INTEGER,
+        autoIncrement: true,
+        allowNull: false,
+        primaryKey: true,
     },
-}, {timestamps: true})
+    name: {
+        type: Sequelize.STRING,
+        allowNull: false,
+    },
+});
 
-const Airline = mongoose.model('Airline', airlineSchema)
-
-module.exports = Airline
-
-//    "id": "3",
-//    "name": "Air France",
-//    "country_id": 4
+module.exports = Airline;

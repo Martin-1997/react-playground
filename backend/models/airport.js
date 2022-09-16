@@ -1,21 +1,25 @@
-const mongoose = require('mongoose')
-const Schema = mongoose.Schema;
+const Sequelize = require('sequelize')
+const sequelize = require('../db')
 
-const airportSchema = new Schema({
+const Airport = sequelize.define("airport", {
+    id: {
+        type: Sequelize.INTEGER,
+        autoIncrement: true,
+        allowNull: false,
+        primaryKey: true,
+    },
     name: {
-        type : String,
-        required : true,
+        type: Sequelize.STRING,
+        allowNull: false,
+    },
+    short_name: {
+        type: Sequelize.STRING,
+        allowNull: false,
     },
     city: {
-        type : String,
-        required : true,
+        type: Sequelize.STRING,
+        allowNull: false,
     },
-}, {timestamps: true})
+});
 
-const Airport = mongoose.model('Airport', airportSchema)
-
-module.exports = Airport
-//   "id": "1",
-//   "name": "Berlin Brandenburg Airport",
-//   "city": "Berlin",
-//   "country_id": 1
+module.exports = Airport;

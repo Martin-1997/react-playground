@@ -1,13 +1,17 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const Sequelize = require('sequelize')
+const sequelize = require('../db')
 
-const countrySchema = new Schema({
-    name: {
-        type : String,
-        required : true,
+const Country = sequelize.define("country", {
+    id: {
+        type: Sequelize.INTEGER,
+        autoIncrement: true,
+        allowNull: false,
+        primaryKey: true,
     },
-}, {timestamps: true}) // this adds automatically timestamps when data is added
+    name: {
+        type: Sequelize.STRING,
+        allowNull: false,
+    },
+});
 
-const Country = mongoose.model('Country', countrySchema)
-
-module.exports = Country
+module.exports = Country;
