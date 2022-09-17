@@ -29,15 +29,18 @@ export default function FlightPage({ flights, airports, countries, airlines }) {
         <Container>
             <Row>
                 <Col>
-                    <ListSelector name={"Start Airport"} items={airports} optionKey={"id"} optionLabel={"name"} onChange={setStartAirports}></ListSelector>
-                    <ListSelector name={"Destination Airports"} items={airports} optionKey={"id"} optionLabel={"name"} onChange={setDestAirports}></ListSelector>
+                    <label htmlFor="start_airport_selector">Start Airport</label>
+                    <ListSelector id="start_airport_selector" name={"Start Airport"} items={airports} optionKey={"id"} optionLabel={"name"} onChange={setStartAirports}></ListSelector>
+                    <br></br>
+                    <label htmlFor="destination_airport_selector">Destination Airport</label>
+                    <ListSelector id="destination_airport_selector" name={"Destination Airports"} items={airports} optionKey={"id"} optionLabel={"name"} onChange={setDestAirports}></ListSelector>
                 </Col>
                 <Col xs={10}>
-                    <FlightList flights={flights}></FlightList>
+                    {(flights != null) ? <FlightList flights={flights}></FlightList> : "No flights available"}
                     {/* <FlightList flights={ flights.filter((flight) => {flight.destination_name === filter_dest_airport})}></FlightList> */}
                     {
-
-                        //   if !(flights === null) ? <FlightList flights={ flights.filter((flight) => {flight.destination_name === filter_dest_airport})}></FlightList> : "No flights available"
+                        /* .filter((flight) => {flight.destination_name === filter_dest_airport}) */
+                          
                     }
                 </Col>
                 {/* <Col>3 of 3</Col> */}
@@ -45,13 +48,3 @@ export default function FlightPage({ flights, airports, countries, airlines }) {
         </Container>
     );
 }
-
-// "flight_id" : 1,
-//             "destination_id" : 1,
-//             "destination_name" : "Berlin Brandenburg Airport",
-//             "start_id" : 3,
-//             "start_name" : "Charles de Gaulle Airport",
-//             "airline_id" : 3,
-//             "airline_name" : "Air France",
-//             "date" : "25-05-2022",
-//             "price" : 235

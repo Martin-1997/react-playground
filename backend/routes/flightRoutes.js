@@ -1,5 +1,7 @@
 const express = require("express");
 const Flight = require("../models/flight");
+const Airport = require("../models/airport");
+const Airline = require("../models/airline");
 
 const router = express.Router();
 
@@ -16,7 +18,13 @@ router.get("/flights/:id", (req, res) => {
 });
 
 router.get("/flights", (req, res) => {
-  Flight.findAll()
+  Flight.findAll({
+    include: [
+      { model: Airport, as: 'DestinationAirport'},
+      { model: Airport, as: 'StartAirport'},
+      { model: Airline},
+    ],
+  })
     .then((result) => {
       res.send(result);
     })
