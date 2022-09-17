@@ -17,7 +17,7 @@ const Flight = sequelize.define("flight", {
         allowNull: false,
     },
     price: {
-        type: Sequelize.DECIMAL(2),
+        type: Sequelize.DECIMAL(6,2),
         allowNull: false,
     },
 });

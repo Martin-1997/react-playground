@@ -16,8 +16,11 @@ require('dotenv').config();
 const Sequelize = require("sequelize")
 const sequelize = new Sequelize("flightapp", process.env.POSTGRES_DB_USERNAME, process.env.POSTGRES_DB_PASSWORD, {
     dialect: "postgres",
-    host: process.env.HOST,
-    port: process.env.PORT,
+    host: process.env.POSTGRES_DB_HOST,
+    port: process.env.POSTGRES_DB_PORT,
+    // Logging settings 
+    // https://sequelize.org/docs/v6/getting-started/
+    logging: false,
 });
 // https://sequelize.org/docs/v6/getting-started/
 // try {

@@ -1,35 +1,38 @@
 const express = require('express')
-const Country = require('../models/country')
+const Airline = require('../models/airline')
 
 const router = express.Router();
 
 // Query settings
 https://sequelize.org/docs/v6/core-concepts/model-querying-basics/
 
-router.get('/countries/:id', (req, res) => {
-    Country.findAll({ where: {
+router.get('/airlines/:id', (req, res) => {
+    Airline.findAll({ where: {
         id: req.params.id
     }}).then((result) => {
         res.send(result)
     }).catch((err) => console.log(err))
 })
 
-router.get('/countries', (req, res) => {
-    Country.findAll().then((result) => {
+router.get('/airlines', (req, res) => {
+    Airline.findAll().then((result) => {
         res.send(result)
     }).catch((err) => console.log(err))
 })
 
 router.use(express.urlencoded({ extended: true }))
-router.post('/countries', (req, res) => {
-    Country.create({ name: req.query.name }).then((result) => {
+router.post('/airlines', (req, res) => {
+    Airline.create({ 
+        name: req.query.name,
+        countryID : req.query.countryID
+     }).then((result) => {
         res.send(result)
     }).catch((err) => console.log(err));
 })
 
-router.delete('/countries/:id', (req, res) => {
+router.delete('/airlines/:id', (req, res) => {
     const id = req.params.id;
-    Country.destroy({
+    Airline.destroy({
         where: {
             id: id
         }
