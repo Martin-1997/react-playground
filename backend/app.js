@@ -95,13 +95,13 @@ sequelize
     return Country.create({ name: "Germany" });
   })
   .then((country) => {
-    return country.createAirport({
-      short_name: "BER",
-      name: "Flughafen Berlin Brandenburg",
-      city: "Berlin",
-    });
+    // return country.createAirport({
+    //   short_name: "BER",
+    //   name: "Flughafen Berlin Brandenburg",
+    //   city: "Berlin",
+    // });
   })
   .then((airport) => {
-    console.log(airport);
+    // console.log(airport);
   })
   .catch((err) => console.log("Unable to connect to the database:", err));
