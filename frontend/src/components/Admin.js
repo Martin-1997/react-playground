@@ -1,49 +1,48 @@
-import useFetch from "../useFetch";
-import { useState } from "react";
+import useFetch from '../useFetch'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 const Admin = () => {
+  const { data, isPending, error } = useFetch('http://localhost:5000/countries')
 
-    const { data, isPending, error } = useFetch("http://localhost:5000/countries");
+  const [name, setName] = useState('')
+  const [isCreatePending, setCreatePending] = useState(false)
+  const navigate = useNavigate()
 
-    const [name, setName] = useState('')
-    const [isCreatePending, setCreatePending] = useState(false)
-    const navigate = useNavigate()
+  const handleSubmit = (e) => {
+    // This stops the page from reloading
+    // e.preventDefault();
+    setCreatePending(true)
 
-    const handleSubmit = (e) => {
-        // This stops the page from reloading
-        // e.preventDefault();
-        setCreatePending(true)
+    const country = { name }
+    console.log(country)
+    fetch('http://localhost:5000/countries', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json, text/plain, */*',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(country)
+    }).then(() => {
+      console.log('New Country added!')
+      setCreatePending(false)
+      // Navigate to a specific page
+      navigate('/')
+    })
+  }
 
-        const country = { name };
-        console.log(country);
-        fetch('http://localhost:5000/countries', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json, text/plain, */*',
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(country),
-        }).then(() => {
-            console.log("New Country added!")
-            setCreatePending(false)
-            // Navigate to a specific page
-            navigate("/")
-        })
-    }
+  const handleDelete = (e) => {
+    // This stops the page from reloading
+    // e.preventDefault();
+    const id = e.target.id.value
+    fetch('http://localhost:5000/countries/' + id, {
+      method: 'DELETE'
+    }).then(() => {
+      navigate('/admin')
+    })
+  }
 
-    const handleDelete = (e) => {
-        // This stops the page from reloading
-        //e.preventDefault();
-        let id = e.target.id.value;
-        fetch('http://localhost:5000/countries/' + id, {
-            method:'DELETE'
-        }).then(() => {
-            navigate("/admin")
-        })
-    }
-
-    return <div>
+  return <div>
         <h2>Admin Page</h2>
         {isPending && <div><br />Loading ...<br /><br /></div>}
         {error && <div><br />{error}<br /><br /></div>}
@@ -72,7 +71,7 @@ const Admin = () => {
                 </form>
             </div>
         }
-    </div>;
+    </div>
 }
 
-export default Admin;
+export default Admin

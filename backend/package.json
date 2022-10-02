@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon -w . -w -env app.js"
+    "start": "nodemon -w . -w -env app.js",
+    "lint": "eslint ."
   },
   "author": "",
   "license": "ISC",
@@ -21,5 +22,12 @@
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.21.6",
     "serve-favicon": "^2.5.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.24.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-n": "^15.3.0",
+    "eslint-plugin-promise": "^6.0.1"
   }
 }

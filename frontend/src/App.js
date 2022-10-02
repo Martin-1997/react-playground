@@ -1,19 +1,19 @@
-import './App.css';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import Main from './components/Main';
-import About from './components/About';
-import Settings from './components/Settings';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css'
+import Header from './components/Header'
+import Footer from './components/Footer'
+import Main from './components/Main'
+import About from './components/About'
+import Settings from './components/Settings'
+import 'bootstrap/dist/css/bootstrap.min.css'
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom'
-import FlightPage from './components/FlightPage';
-import { useState, useEffect } from 'react';
-import Container from 'react-bootstrap/Container';
-import FlightDetails from './components/FlightDetails';
-import Admin from './components/Admin';
-import NotFound from './components/NotFound';
+import FlightPage from './components/FlightPage'
+import { useState, useEffect } from 'react'
+import Container from 'react-bootstrap/Container'
+import FlightDetails from './components/FlightDetails'
+import Admin from './components/Admin'
+import NotFound from './components/NotFound'
 
-function App() {
+function App () {
   /*
   All the data required is fetched and managed in the top level container (App). From there, the data is passed to the subcomponents.
   I am not sure if this is the best approach or if it is better to query the required data on the submodule level.
@@ -33,39 +33,36 @@ function App() {
   // useEffect runs a function after every render of the component
   // If the state of the page is changed in useEffect, this triggers a rerender and then an infinite loop
   useEffect(() => {
-   // Function to fetch the data from the API
+    // Function to fetch the data from the API
     const fetchData = async (key) => {
       const res = await fetch(`http://localhost:5000/${key}`)
       const data = await res.json()
       return data
     }
-    try{
-    fetchData("airports").then((data) => {
-      setAirports(data)
-    })
+    try {
+      fetchData('airports').then((data) => {
+        setAirports(data)
+      })
 
-    fetchData("flights").then((data) => {
-      setFlights(data)
-    })
+      fetchData('flights').then((data) => {
+        setFlights(data)
+      })
 
-    fetchData("countries").then((data) => {
-      setCountries(data)
-    })
+      fetchData('countries').then((data) => {
+        setCountries(data)
+      })
 
-    fetchData("airlines").then((data) => {
-      setAirlines(data)
-      //This does not work for multiple data stream which need to be loaded - either it needs to be check for each individual one or all the data is loaded in one statement
-      setIsPending(false)
-    })
-    }
-    catch(err) {
+      fetchData('airlines').then((data) => {
+        setAirlines(data)
+        // This does not work for multiple data stream which need to be loaded - either it needs to be check for each individual one or all the data is loaded in one statement
+        setIsPending(false)
+      })
+    } catch (err) {
       setIsPending(false)
       setError(err.message)
       console.log(err)
     }
   }, []) // empty dependency array -> onl< runs the function after the initial rendering, additional variables which should be watched can be added to the array
-
-
 
   return (
     // Make Router available in the whole app
@@ -99,7 +96,7 @@ function App() {
         <Footer></Footer>
       </div >
     </Router >
-  );
+  )
 }
 
-export default App;
+export default App

@@ -1,12 +1,12 @@
-import { Link, useParams } from "react-router-dom";
-import useFetch from "../useFetch";
+import { Link, useParams } from 'react-router-dom'
+import useFetch from '../useFetch'
 
 const FlightDetails = () => {
-    const { id } = useParams();
-    // data : flight -> Make "data" accessible with the variable "flight"
-    const { data: flight, error, isPending } = useFetch(`http://localhost:6005/flights/${id}`)
+  const { id } = useParams()
+  // data : flight -> Make "data" accessible with the variable "flight"
+  const { data: flight, error, isPending } = useFetch(`http://localhost:6005/flights/${id}`)
 
-    return (
+  return (
         <div>
             {/* Conditional loading */}
             {isPending && <div>Loading flight data...</div>}
@@ -18,12 +18,9 @@ const FlightDetails = () => {
                 </div>
             }
 
-
-
-
             <Link to="/flights">Back</Link>
         </div>
-    );
+  )
 }
 
-export default FlightDetails;
+export default FlightDetails

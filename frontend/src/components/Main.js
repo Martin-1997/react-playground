@@ -1,12 +1,9 @@
-import React, { useState, useEffect } from "react"
-import Button from './Button';
-import FlightList from './FlightList';
-
-
-
+import React, { useState, useEffect } from 'react'
+import Button from './Button'
+import FlightList from './FlightList'
 
 const Main = ({ flights }) => {
-    return (
+  return (
         <div>
             <p>Welcome to this flight search app. It will allow you to query sophistically for flights which match your requirements.</p>
         </div>
@@ -15,17 +12,13 @@ const Main = ({ flights }) => {
         //     {showAddTask && <AddTask className='container' onAdd={addTask}></AddTask>}
         //     {/* ternary operator without an else */}
 
-        //     <div className='container'>
-        //         {tasks.length > 0 ?
-        //             <Tasks tasks={tasks} onDelete={deleteTask} switchTaskReminder={switchTaskReminder}></Tasks> : 'No tasks available'
-        //         }
-        //     </div>
-        // </div>
-    );
+  //     <div className='container'>
+  //         {tasks.length > 0 ?
+  //             <Tasks tasks={tasks} onDelete={deleteTask} switchTaskReminder={switchTaskReminder}></Tasks> : 'No tasks available'
+  //         }
+  //     </div>
+  // </div>
+  )
 }
 
-export default Main;
-
-
-
-
+export default Main
