@@ -1,17 +1,17 @@
-import './App.css'
-import Header from './components/Header'
-import Footer from './components/Footer'
-import Main from './components/Main'
-import About from './components/About'
-import Settings from './components/Settings'
-import 'bootstrap/dist/css/bootstrap.min.css'
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom'
-import FlightPage from './components/FlightPage'
-import { useState, useEffect } from 'react'
-import Container from 'react-bootstrap/Container'
-import FlightDetails from './components/FlightDetails'
-import Admin from './components/Admin'
-import NotFound from './components/NotFound'
+import "./App.css"
+import Header from "./components/Header"
+import Footer from "./components/Footer"
+import Main from "./components/Main"
+import About from "./components/About"
+import Settings from "./components/Settings"
+import "bootstrap/dist/css/bootstrap.min.css"
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
+import FlightPage from "./components/FlightPage"
+import React, { useState, useEffect } from "react"
+import Container from "react-bootstrap/Container"
+import FlightDetails from "./components/FlightDetails"
+import Admin from "./components/Admin"
+import NotFound from "./components/NotFound"
 
 function App () {
   /*
@@ -40,19 +40,19 @@ function App () {
       return data
     }
     try {
-      fetchData('airports').then((data) => {
+      fetchData("airports").then((data) => {
         setAirports(data)
       })
 
-      fetchData('flights').then((data) => {
+      fetchData("flights").then((data) => {
         setFlights(data)
       })
 
-      fetchData('countries').then((data) => {
+      fetchData("countries").then((data) => {
         setCountries(data)
       })
 
-      fetchData('airlines').then((data) => {
+      fetchData("airlines").then((data) => {
         setAirlines(data)
         // This does not work for multiple data stream which need to be loaded - either it needs to be check for each individual one or all the data is loaded in one statement
         setIsPending(false)

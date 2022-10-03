@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from 'react'
-import Button from './Button'
-import FlightList from './FlightList'
+import { React } from "react"
 
-const Main = ({ flights }) => {
+const Main = () => {
   return (
         <div>
             <p>Welcome to this flight search app. It will allow you to query sophistically for flights which match your requirements.</p>

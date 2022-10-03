@@ -1,5 +1,7 @@
-import { Link, useParams } from 'react-router-dom'
-import useFetch from '../useFetch'
+import { Link, useParams } from "react-router-dom"
+import useFetch from "../useFetch"
+import PropTypes from "prop-types"
+import React from "react"
 
 const FlightDetails = () => {
   const { id } = useParams()
@@ -21,6 +23,10 @@ const FlightDetails = () => {
             <Link to="/flights">Back</Link>
         </div>
   )
+}
+
+FlightDetails.propTypes = {
+  flights: PropTypes.array,
 }
 
 export default FlightDetails

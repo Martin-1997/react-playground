@@ -1,12 +1,7 @@
 // This component is used whenever a user needs to select one or multiple values from a list
-import Container from 'react-bootstrap/Container'
-import Nav from 'react-bootstrap/Nav'
-import Navbar from 'react-bootstrap/Navbar'
-import NavDropdown from 'react-bootstrap/NavDropdown'
-import Dropdown from 'react-bootstrap/Dropdown'
-import DropdownButton from 'react-bootstrap/DropdownButton'
-import ButtonGroup from 'react-bootstrap/ButtonGroup'
-import DropdownMultiselect from 'react-multiselect-dropdown-bootstrap'
+import { React } from "react"
+import DropdownMultiselect from "react-multiselect-dropdown-bootstrap"
+import PropTypes from "prop-types"
 
 const ListSelector = ({ name, items, optionKey, optionLabel, onChange }) => {
   return (
@@ -18,6 +13,14 @@ const ListSelector = ({ name, items, optionKey, optionLabel, onChange }) => {
         }} >
         </DropdownMultiselect>
   )
+}
+
+ListSelector.propTypes = {
+  name: PropTypes.string,
+  items: PropTypes.array,
+  optionKey: PropTypes.number,
+  optionLabel: PropTypes.string,
+  onChange: PropTypes.func,
 }
 
 export default ListSelector

@@ -1,33 +1,33 @@
-import useFetch from '../useFetch'
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import useFetch from "../useFetch"
+import React, { useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 const Admin = () => {
-  const { data, isPending, error } = useFetch('http://localhost:5000/countries')
+  const { data, isPending, error } = useFetch("http://localhost:5000/countries")
 
-  const [name, setName] = useState('')
+  const [name, setName] = useState("")
   const [isCreatePending, setCreatePending] = useState(false)
   const navigate = useNavigate()
 
-  const handleSubmit = (e) => {
+  const handleSubmit = () => {
     // This stops the page from reloading
     // e.preventDefault();
     setCreatePending(true)
 
     const country = { name }
     console.log(country)
-    fetch('http://localhost:5000/countries', {
-      method: 'POST',
+    fetch("http://localhost:5000/countries", {
+      method: "POST",
       headers: {
-        Accept: 'application/json, text/plain, */*',
-        'Content-Type': 'application/json'
+        Accept: "application/json, text/plain, */*",
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(country)
+      body: JSON.stringify(country),
     }).then(() => {
-      console.log('New Country added!')
+      console.log("New Country added!")
       setCreatePending(false)
       // Navigate to a specific page
-      navigate('/')
+      navigate("/")
     })
   }
 
@@ -35,10 +35,10 @@ const Admin = () => {
     // This stops the page from reloading
     // e.preventDefault();
     const id = e.target.id.value
-    fetch('http://localhost:5000/countries/' + id, {
-      method: 'DELETE'
+    fetch("http://localhost:5000/countries/" + id, {
+      method: "DELETE",
     }).then(() => {
-      navigate('/admin')
+      navigate("/admin")
     })
   }
 
@@ -56,7 +56,7 @@ const Admin = () => {
                         <label htmlFor="name"></label>
                         <input type="text" id="name" name="name" required value={element.name} readOnly></input>
                         <input type="submit" value="Delete"></input>
-                    </form>
+                    </form>,
                 )}
 
                 <h3>Add a new country:</h3>

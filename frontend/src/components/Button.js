@@ -1,13 +1,13 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from "react"
+import PropTypes from "prop-types"
 
 // single variable (like (probs)) -> allows arbitrary values to be received, acccessible with probs.value_name
 // predefined variables (like ({color, text})) -> predetermines which
 const Button = ({ color, text, onClick }) => {
-  const buttonClick = (e) => {
-    console.log('Button was clicked!')
-    console.log(e)
-  }
+  // const buttonClick = (e) => {
+  //   console.log("Button was clicked!")
+  //   console.log(e)
+  // }
 
   return (
     <div>
@@ -17,12 +17,13 @@ const Button = ({ color, text, onClick }) => {
 }
 
 Button.defaultProps = {
-  color: 'steelblue'
+  color: "steelblue",
 }
 
-Button.protoTypes = {
+Button.propTypes = {
   text: PropTypes.string,
-  color: PropTypes.string
+  color: PropTypes.string,
+  onClick: PropTypes.func,
 }
 
 export default Button
